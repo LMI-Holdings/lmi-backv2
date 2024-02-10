@@ -1,0 +1,1 @@
+export const expiryDate5min = new Date(new Date().getTime() + 5 * 60 * 1000); // 5 minutes ahead

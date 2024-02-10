@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "lmiholdings.123",
+    "database": "postgres",
+    "host": "db.fgjlxfwlkdfwzkqgucdt.supabase.co",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "lmiholdings.123",
+    "database": "postgres",
+    "host": "db.fgjlxfwlkdfwzkqgucdt.supabase.co",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "lmiholdings.123",
+    "database": "postgres",
+    "host": "db.fgjlxfwlkdfwzkqgucdt.supabase.co",
+    "dialect": "postgres"
+  }
+}
