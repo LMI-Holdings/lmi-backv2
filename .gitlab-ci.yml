@@ -1,0 +1,9 @@
+stages: 
+  - deploy
+
+deploy: 
+  stage: deploy
+  script: 
+    - chmod 400 itlp
+    - ssh -i itlp -o StrictHostKeyChecking=no $USER@$IPADDRESS 'cd /home/mckenzie/api && git pull "https://panditmckenzie:glpat-H7dAEHucNPunwtnTizPN@gitlab.com/panditmckenzie/lmi-client-demo.git" main && npm i && npm run build'
+  
