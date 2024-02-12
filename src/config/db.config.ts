@@ -2,9 +2,9 @@ import { Sequelize } from 'sequelize-typescript';
 
 const sequelize = new Sequelize({
     database: 'postgres',
-    username: 'postgres',
+    username: 'postgres.fgjlxfwlkdfwzkqgucdt',
     password: 'lmiholdings.123',
-    host: 'db.fgjlxfwlkdfwzkqgucdt.supabase.co',
+    host: 'aws-0-us-east-1.pooler.supabase.com',
     port: 5432,
     dialect: 'postgres',
     models: [__dirname + '/../models'],
