@@ -1,5 +1,5 @@
 import { StorageDetails } from '../../dtos/ClientServices';
-import Storage  from '../../models/Storage';
+import { Storage }  from '../../models/Storage';
 import EmailService from '../EmailService';
 
 class StorageService {

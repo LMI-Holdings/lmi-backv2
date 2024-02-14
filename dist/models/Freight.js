@@ -39,45 +39,45 @@ __decorate([
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.FLOAT,
-        allowNull: false,
+        allowNull: true,
     }),
     __metadata("design:type", Number)
 ], Freight.prototype, "weight", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.DATE,
-        allowNull: false,
+        allowNull: true,
     }),
     __metadata("design:type", Date)
 ], Freight.prototype, "deliveryDate", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.FLOAT,
-        allowNull: false,
+        type: sequelize_typescript_1.DataType.JSONB,
+        allowNull: true,
     }),
-    __metadata("design:type", Number)
-], Freight.prototype, "fromLatitude", void 0);
+    __metadata("design:type", Object)
+], Freight.prototype, "pickupLocation", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.FLOAT,
-        allowNull: false,
+        type: sequelize_typescript_1.DataType.JSONB,
+        allowNull: true,
     }),
-    __metadata("design:type", Number)
-], Freight.prototype, "fromLongitude", void 0);
+    __metadata("design:type", Object)
+], Freight.prototype, "dropoffLocation", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.FLOAT,
-        allowNull: false,
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: true,
     }),
-    __metadata("design:type", Number)
-], Freight.prototype, "toLatitude", void 0);
+    __metadata("design:type", String)
+], Freight.prototype, "pickupAdditionalInfo", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.FLOAT,
-        allowNull: false,
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: true,
     }),
-    __metadata("design:type", Number)
-], Freight.prototype, "toLongitude", void 0);
+    __metadata("design:type", String)
+], Freight.prototype, "dropoffAdditionalInfo", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.UUID,
@@ -86,10 +86,31 @@ __decorate([
     __metadata("design:type", String)
 ], Freight.prototype, "driverId", void 0);
 __decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: true,
+    }),
+    __metadata("design:type", String)
+], Freight.prototype, "status", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.BOOLEAN,
+        allowNull: true,
+    }),
+    __metadata("design:type", Boolean)
+], Freight.prototype, "needStorageOption", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.UUID,
+        allowNull: true,
+    }),
+    __metadata("design:type", String)
+], Freight.prototype, "storageServiceId", void 0);
+__decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => User_1.User),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.UUID,
-        allowNull: false,
+        allowNull: true,
     }),
     __metadata("design:type", String)
 ], Freight.prototype, "userId", void 0);

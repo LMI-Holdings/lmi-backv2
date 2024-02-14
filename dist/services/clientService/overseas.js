@@ -23,7 +23,6 @@ class OverseasLogisticsService {
                 console.log([logisticsDetails]);
                 const createdLogistics = yield OverseasLogistics_1.OverseasLogistics.create(Object.assign({}, logisticsDetails));
                 // created = createdLogistics;
-                console.log(createdLogistics, createdLogistics.shipmentId, createdLogistics.id);
                 this.email(createdLogistics);
                 return createdLogistics;
             }

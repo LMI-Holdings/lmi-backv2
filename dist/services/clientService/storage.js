@@ -12,13 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Storage_1 = __importDefault(require("../../models/Storage"));
+const Storage_1 = require("../../models/Storage");
 const EmailService_1 = __importDefault(require("../EmailService"));
 class StorageService {
     createStorage(storageDetails) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const createdStorage = yield Storage_1.default.create(Object.assign({}, storageDetails));
+                const createdStorage = yield Storage_1.Storage.create(Object.assign({}, storageDetails));
                 this.email(createdStorage);
                 return createdStorage;
             }
@@ -35,7 +35,7 @@ class StorageService {
     getStorageById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const storage = yield Storage_1.default.findByPk(id);
+                const storage = yield Storage_1.Storage.findByPk(id);
                 return storage;
             }
             catch (err) {
@@ -46,7 +46,7 @@ class StorageService {
     getAllStorage() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const allStorage = yield Storage_1.default.findAll();
+                const allStorage = yield Storage_1.Storage.findAll();
                 return allStorage;
             }
             catch (err) {
@@ -57,7 +57,7 @@ class StorageService {
     updateStorage(id, updatedDetails) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const updatedStorage = yield Storage_1.default.update(updatedDetails, {
+                const updatedStorage = yield Storage_1.Storage.update(updatedDetails, {
                     where: { id },
                 });
                 if (updatedStorage[0] === 0) {
@@ -72,7 +72,7 @@ class StorageService {
     deleteStorage(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const deletedStorage = yield Storage_1.default.destroy({ where: { id } });
+                const deletedStorage = yield Storage_1.Storage.destroy({ where: { id } });
                 if (deletedStorage === 0) {
                     throw new Error("Storage not found");
                 }

@@ -10,9 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OverseasLogistics = void 0;
-const sequelize_1 = require("sequelize");
 const sequelize_typescript_1 = require("sequelize-typescript");
-const Freight_1 = require("./Freight");
+const data_types_1 = require("sequelize/types/data-types");
 const User_1 = require("./User");
 let OverseasLogistics = class OverseasLogistics extends sequelize_typescript_1.Model {
 };
@@ -21,7 +20,7 @@ __decorate([
     sequelize_typescript_1.PrimaryKey,
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.UUID,
-        defaultValue: sequelize_1.UUIDV4,
+        defaultValue: data_types_1.UUIDV4,
         allowNull: false,
         unique: true,
     }),
@@ -30,23 +29,80 @@ __decorate([
 __decorate([
     (0, sequelize_typescript_1.Column)({
         allowNull: true,
+        type: sequelize_typescript_1.DataType.STRING,
     }),
     __metadata("design:type", String)
-], OverseasLogistics.prototype, "customsDeclarationNumber", void 0);
+], OverseasLogistics.prototype, "pickupAdditionalInfo", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         allowNull: true,
+        type: sequelize_typescript_1.DataType.STRING,
     }),
     __metadata("design:type", String)
-], OverseasLogistics.prototype, "customsClearanceStatus", void 0);
+], OverseasLogistics.prototype, "dropoffAdditionalInfo", void 0);
 __decorate([
-    (0, sequelize_typescript_1.ForeignKey)(() => Freight_1.Freight),
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.UUID,
         allowNull: true,
+        type: sequelize_typescript_1.DataType.STRING,
     }),
     __metadata("design:type", String)
-], OverseasLogistics.prototype, "shipmentId", void 0);
+], OverseasLogistics.prototype, "packageType", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        allowNull: true,
+        type: sequelize_typescript_1.DataType.STRING,
+    }),
+    __metadata("design:type", String)
+], OverseasLogistics.prototype, "quantity", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        allowNull: true,
+        type: sequelize_typescript_1.DataType.STRING,
+    }),
+    __metadata("design:type", String)
+], OverseasLogistics.prototype, "weight", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        allowNull: true,
+        type: sequelize_typescript_1.DataType.STRING,
+    }),
+    __metadata("design:type", String)
+], OverseasLogistics.prototype, "contactPerson", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        allowNull: true,
+        type: sequelize_typescript_1.DataType.STRING,
+    }),
+    __metadata("design:type", String)
+], OverseasLogistics.prototype, "bankStatementAttachment", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        allowNull: true,
+        type: sequelize_typescript_1.DataType.BOOLEAN,
+    }),
+    __metadata("design:type", Boolean)
+], OverseasLogistics.prototype, "needStorageOption", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        allowNull: true,
+        type: sequelize_typescript_1.DataType.JSONB,
+    }),
+    __metadata("design:type", Object)
+], OverseasLogistics.prototype, "pickupLocation", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        allowNull: true,
+        type: sequelize_typescript_1.DataType.JSONB,
+    }),
+    __metadata("design:type", Object)
+], OverseasLogistics.prototype, "dropoffLocation", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        allowNull: true,
+        type: sequelize_typescript_1.DataType.STRING,
+    }),
+    __metadata("design:type", String)
+], OverseasLogistics.prototype, "status", void 0);
 __decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => User_1.User),
     (0, sequelize_typescript_1.Column)({
@@ -56,58 +112,9 @@ __decorate([
     __metadata("design:type", String)
 ], OverseasLogistics.prototype, "userId", void 0);
 __decorate([
-    (0, sequelize_typescript_1.BelongsTo)(() => Freight_1.Freight),
-    __metadata("design:type", Freight_1.Freight)
-], OverseasLogistics.prototype, "shipment", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: true
-    }),
-    __metadata("design:type", String)
-], OverseasLogistics.prototype, "movement", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: true
-    }),
-    __metadata("design:type", String)
-], OverseasLogistics.prototype, "shipmentFrom", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: true
-    }),
-    __metadata("design:type", String)
-], OverseasLogistics.prototype, "storageId", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: true
-    }),
-    __metadata("design:type", String)
-], OverseasLogistics.prototype, "country", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: true
-    }),
-    __metadata("design:type", String)
-], OverseasLogistics.prototype, "city", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.BOOLEAN,
-        allowNull: true
-    }),
-    __metadata("design:type", Boolean)
-], OverseasLogistics.prototype, "arrived", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.JSON,
-        allowNull: true
-    }),
-    __metadata("design:type", Object)
-], OverseasLogistics.prototype, "seaShipDetails", void 0);
+    (0, sequelize_typescript_1.BelongsTo)(() => User_1.User),
+    __metadata("design:type", User_1.User)
+], OverseasLogistics.prototype, "user", void 0);
 __decorate([
     sequelize_typescript_1.CreatedAt,
     __metadata("design:type", Date)

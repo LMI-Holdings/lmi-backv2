@@ -13,7 +13,6 @@ class OverseasLogisticsService {
         ...logisticsDetails
       });
       // created = createdLogistics;
-      console.log(createdLogistics, createdLogistics.shipmentId, createdLogistics.id);
       this.email(createdLogistics);
       return createdLogistics;
     } catch (err: any) {
