@@ -1,20 +1,12 @@
+import { Model, Table, Column, ForeignKey, BelongsTo, DataType, PrimaryKey, CreatedAt, UpdatedAt } from 'sequelize-typescript';
+import { Warehouse } from './Warehouse'; // Import the Warehouse model
+import { Freight } from './Freight'; // Import the DeliveryService model
 import { UUIDV4 } from 'sequelize';
-import {
-  Column,
-  Table,
-  Model,
-  PrimaryKey,
-  DataType,
-  CreatedAt,
-  UpdatedAt,
-  ForeignKey,
-  BelongsTo,
-} from 'sequelize-typescript';
-import { User } from './User'; // Import the User model
-import Warehouse from './Warehouse';
+import { User } from './User';
 
 @Table
 export class Storage extends Model {
+
   @PrimaryKey
   @Column({
     type: DataType.UUID,
@@ -26,41 +18,86 @@ export class Storage extends Model {
 
   @ForeignKey(() => Warehouse)
   @Column({
-    type: DataType.STRING,
     allowNull: true,
+    type: DataType.UUID, // Assuming UUID type for the warehouseId
   })
   warehouseId!: string;
 
   @BelongsTo(() => Warehouse)
   warehouse!: Warehouse;
 
+  @ForeignKey(() => Freight)
   @Column({
-    type: DataType.FLOAT,
-    allowNull: false,
+    allowNull: true,
+    type: DataType.UUID, // Assuming UUID type for the deliveryServiceId
   })
-  packageVolume!: number;
+  freightserviceId!: string;
+
+  @BelongsTo(() => Freight)
+  freightservice!: Freight;
 
   @Column({
-    type: DataType.FLOAT,
-    allowNull: false,
-  })
-  packageWeight!: number;
-
-  @Column({
+    allowNull: true,
     type: DataType.STRING,
-    allowNull: false,
+  })
+  region!: string;
+
+  @Column({
+    allowNull: true,
+    type: DataType.STRING,
   })
   packageType!: string;
 
-  @ForeignKey(() => User)
   @Column({
-    type: DataType.UUID,
-    allowNull: true, // Allow null for the userId field
+    allowNull: true,
+    type: DataType.STRING,
   })
-  userId!: string;
+  quantity!: string;
 
-  @BelongsTo(() => User)
-  user!: User;
+  @Column({
+    allowNull: true,
+    type: DataType.STRING,
+  })
+  weight!: string;
+
+  @Column({
+    allowNull: true,
+    type: DataType.STRING,
+  })
+  contactPerson!: string;
+
+  @Column({
+    allowNull: true,
+    type: DataType.BOOLEAN,
+  })
+  deliveryServiceNeeded!: boolean;
+
+  @Column({
+    allowNull: true,
+    type: DataType.JSONB, // Assuming JSONB type for the warehouseLocation
+  })
+  warehouseLocation!: {
+    latitude: number;
+    longitude: number;
+  };
+
+  @Column({
+    allowNull: true,
+    type: DataType.STRING,
+  })
+  status!: string;
+
+   // Association with User model
+ @ForeignKey(() => User)
+ @Column({
+   type: DataType.UUID,
+   allowNull: true,
+ })
+ userId!: string;
+
+ @BelongsTo(() => User)
+ user!: User;
+
 
   @CreatedAt
   created_at!: Date;
@@ -68,5 +105,3 @@ export class Storage extends Model {
   @UpdatedAt
   updated_at!: Date;
 }
-
-export default Storage;

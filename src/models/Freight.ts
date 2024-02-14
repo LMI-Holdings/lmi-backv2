@@ -33,41 +33,49 @@ export class Freight extends Model {
 
   @Column({
     type: DataType.FLOAT,
-    allowNull: false,
+    allowNull: true,
   })
   weight!: number;
 
   @Column({
     type: DataType.DATE,
-    allowNull: false,
+    allowNull: true,
   })
   deliveryDate!: Date;
 
-  // LatLng fields for "from" location
+  // Pickup location
   @Column({
-    type: DataType.FLOAT,
-    allowNull: false,
+    type: DataType.JSONB,
+    allowNull: true,
   })
-  fromLatitude!: number;
+  pickupLocation!: {
+    latitude: number;
+    longitude: number;
+  };
 
+  // Drop-off location
   @Column({
-    type: DataType.FLOAT,
-    allowNull: false,
+    type: DataType.JSONB,
+    allowNull: true,
   })
-  fromLongitude!: number;
+  dropoffLocation!: {
+    latitude: number;
+    longitude: number;
+  };
 
-  // LatLng fields for "to" location
+  // Additional information for pickup
   @Column({
-    type: DataType.FLOAT,
-    allowNull: false,
+    type: DataType.STRING,
+    allowNull: true,
   })
-  toLatitude!: number;
+  pickupAdditionalInfo!: string;
 
+  // Additional information for drop-off
   @Column({
-    type: DataType.FLOAT,
-    allowNull: false,
+    type: DataType.STRING,
+    allowNull: true,
   })
-  toLongitude!: number;
+  dropoffAdditionalInfo!: string;
 
   // Driver's ID field
   @Column({
@@ -75,12 +83,32 @@ export class Freight extends Model {
     allowNull: true, 
   })
   driverId!: string;
+
+  // Status of the freight
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+  })
+  status!: string;
+  
+  @Column({
+    type: DataType.BOOLEAN,
+    allowNull: true,
+  })
+  needStorageOption!: boolean;
+
+  // ID of the selected storage service
+  @Column({
+    type: DataType.UUID,
+    allowNull: true,
+  })
+  storageServiceId!: string;
  
  // Association with User model
  @ForeignKey(() => User)
  @Column({
    type: DataType.UUID,
-   allowNull: false,
+   allowNull: true,
  })
  userId!: string;
 

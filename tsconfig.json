@@ -108,7 +108,7 @@
   },
     "include": [
     "src/**/*.ts"                    // include your TypeScript files
-, "src/config/swaggerConfig.ts"  ],
+, "src/config/swaggerConfig.ts", "src/migrations/20240212131259-create-freight-table.js"  ],
   "exclude": [
     "node_modules"                   // exclude the node_modules directory
   ]

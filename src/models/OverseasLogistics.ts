@@ -1,20 +1,10 @@
-import { UUIDV4 } from 'sequelize';
-import {
-  Column,
-  Table,
-  Model,
-  PrimaryKey,
-  DataType,
-  CreatedAt,
-  UpdatedAt,
-  ForeignKey,
-  BelongsTo,
-} from 'sequelize-typescript';
-import { Freight } from './Freight';
+import { Model, Table, Column, DataType, PrimaryKey, BelongsTo, CreatedAt, ForeignKey, UpdatedAt } from 'sequelize-typescript';
+import { UUIDV4 } from 'sequelize/types/data-types';
 import { User } from './User';
 
 @Table
 export class OverseasLogistics extends Model {
+
   @PrimaryKey
   @Column({
     type: DataType.UUID,
@@ -24,81 +14,90 @@ export class OverseasLogistics extends Model {
   })
   id!: string;
 
-  // Customs Documentation fields
   @Column({
     allowNull: true,
+    type: DataType.STRING,
   })
-  customsDeclarationNumber!: string;
+  pickupAdditionalInfo!: string;
 
   @Column({
     allowNull: true,
+    type: DataType.STRING,
   })
-  customsClearanceStatus!: string;
+  dropoffAdditionalInfo!: string;
 
-  // Link to Freight Service
-  @ForeignKey(() => Freight)
   @Column({
-    type: DataType.UUID,
     allowNull: true,
+    type: DataType.STRING,
   })
-  shipmentId!: string;
+  packageType!: string;
 
-
-  // Link to User Service
-  @ForeignKey(() => User)
   @Column({
-    type: DataType.UUID,
     allowNull: true,
+    type: DataType.STRING,
   })
-  userId!: string;
+  quantity!: string;
 
-  @BelongsTo(() => Freight)
-  shipment!: Freight;
+  @Column({
+    allowNull: true,
+    type: DataType.STRING,
+  })
+  weight!: string;
 
-  // Movement Direction
   @Column({
+    allowNull: true,
     type: DataType.STRING,
-    allowNull: true
   })
-  movement! : string;
-  
+  contactPerson!: string;
+
   @Column({
+    allowNull: true,
     type: DataType.STRING,
-    allowNull: true
   })
-  shipmentFrom! : string;
-  
+  bankStatementAttachment!: string;
+
   @Column({
-    type: DataType.STRING,
-    allowNull: true
-  })
-  storageId! : string;
-  
-  @Column({
-    type: DataType.STRING,
-    allowNull: true
-  })
-  country! : string;
- 
-  @Column({
-    type: DataType.STRING,
-    allowNull: true
-  })
-  city! : string;
-  
-  @Column({
+    allowNull: true,
     type: DataType.BOOLEAN,
-    allowNull: true
   })
-  arrived! : boolean;
-  
-  @Column({
-    type: DataType.JSON,
-    allowNull: true
-  })
-  seaShipDetails! : JSON;
+  needStorageOption!: boolean;
 
-  // Additional Details
+  @Column({
+    allowNull: true,
+    type: DataType.JSONB,
+  })
+  pickupLocation!: {
+    latitude: number;
+    longitude: number;
+  };
+
+  @Column({
+    allowNull: true,
+    type: DataType.JSONB,
+  })
+  dropoffLocation!: {
+    latitude: number;
+    longitude: number;
+  };
+
+  @Column({
+    allowNull: true,
+    type: DataType.STRING,
+  })
+  status!: string;
+
+   // Association with User model
+ @ForeignKey(() => User)
+ @Column({
+   type: DataType.UUID,
+   allowNull: true,
+ })
+ userId!: string;
+
+ @BelongsTo(() => User)
+ user!: User;
+
+
   @CreatedAt
   created_at!: Date;
 
