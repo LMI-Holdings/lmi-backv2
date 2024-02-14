@@ -1,5 +1,5 @@
 import { Model, Table, Column, DataType, PrimaryKey, BelongsTo, CreatedAt, ForeignKey, UpdatedAt } from 'sequelize-typescript';
-import { UUIDV4 } from 'sequelize/types/data-types';
+import { UUIDV4 } from 'sequelize';
 import { User } from './User';
 
 @Table
