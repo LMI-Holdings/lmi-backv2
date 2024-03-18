@@ -1,5 +1,6 @@
 import { OverseasLogisticsDetails } from "../../dtos/ClientServices";
 import { OverseasLogistics } from "../../models/OverseasLogistics";
+import { Stepper } from "../../models/Stepper";
 import EmailService from "../EmailService";
 
 // var created : OverseasLogistics;
@@ -12,6 +13,23 @@ class OverseasLogisticsService {
       const createdLogistics = await OverseasLogistics.create({
         ...logisticsDetails
       });
+
+      const stepper = await Stepper.create({
+        userId: createdLogistics.userId,
+        overseasId: createdLogistics.id,
+        service: "Overseas",
+        request_started: "upcoming",
+        requet_completed: "upcoming",
+        request_approved: "upcoming",
+        request_confirmed: "upcoming",
+        payment_made: "upcoming",
+        transport: "upcoming",
+        delivered: "upcoming",
+        warehouse_status: "upcoming",
+        clearance_complete: "upcoming",
+        overseas_arrived: "upcoming",
+      });
+      
       // created = createdLogistics;
       this.email(createdLogistics);
       return createdLogistics;

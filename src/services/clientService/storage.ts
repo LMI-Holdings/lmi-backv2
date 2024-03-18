@@ -1,4 +1,5 @@
 import { StorageDetails } from '../../dtos/ClientServices';
+import { Stepper } from '../../models/Stepper';
 import { Storage }  from '../../models/Storage';
 import EmailService from '../EmailService';
 
@@ -9,6 +10,20 @@ class StorageService {
         ...storageDetails
       });
 
+      const stepper = await Stepper.create({
+        userId: createdStorage.userId,
+        storageId: createdStorage.id,
+        service: "Storage",
+        request_started: "upcoming",
+        requet_completed: "upcoming",
+        request_approved: "upcoming",
+        request_confirmed: "upcoming",
+        payment_made: "upcoming",
+        transport: "upcoming",
+        delivered: "upcoming",
+        warehouse_status: "upcoming"
+      });
+      
       this.email(createdStorage);
       return createdStorage;
     } catch (err: any) {

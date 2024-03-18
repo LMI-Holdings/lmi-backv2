@@ -15,7 +15,19 @@ class FreightService {
             ...freightDetails // Assign the authenticated user as the owner of the freight
           });
 
-          const stepper = await Stepper.create();
+          const stepper = await Stepper.create({
+            userId: createdFreight.userId,
+            freightserviceId: createdFreight.id,
+            service: "Freight",
+            request_started: "upcoming",
+            requet_completed: "upcoming",
+            request_approved: "upcoming",
+            request_confirmed: "upcoming",
+            payment_made: "upcoming",
+            transport: "upcoming",
+            delivered: "upcoming",
+            warehouse_status: "upcoming"
+          });
     
           await EmailService.sendNewFreightCreated(createdFreight.userId, createdFreight.id)
           return createdFreight;

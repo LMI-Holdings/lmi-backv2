@@ -4,6 +4,7 @@ import { Freight } from '../models/Freight';
 import { authenticateToken } from '../middlewares/authMiddleware';
 import overseasLogisticsController from '../controllers/services/overseasLogistics.controller';
 import storageController from '../controllers/services/storage.controller';
+import stepperController from '../controllers/services/stepper.controller';
 
 
 const router = express.Router();
@@ -30,5 +31,8 @@ router.get('/storage', authenticateToken, storageController.getStorage);
 router.get('/storage/:id', authenticateToken, storageController.getStorageById);
 router.delete('/storage/:id', authenticateToken, storageController.deleteStorage);
 
+
+// Stepper
+router.put('/stepper', authenticateToken, stepperController.updateStepper);
 
 export default router;
