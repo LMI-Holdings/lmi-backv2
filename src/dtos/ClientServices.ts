@@ -53,6 +53,29 @@ export interface OverseasLogisticsDetails {
   updated_at: Date;
 }
 
+
+export interface StepperAttributes {
+  id: string;
+  warehouseId: string | null;
+  storageId: string | null;
+  freightserviceId: string | null;
+  overseasId: string | null;
+  service: string | null;
+  request_approved: string | null;
+  request_confirmed: string | null;
+  request_started: string | null;
+  request_completed: string | null;
+  payment_made: string | null;
+  overseas_arrived: string | null;
+  clearance_complete: string | null;
+  transport: string | null;
+  delivered: string | null;
+  warehouse_status: string | null;
+  userId: string | null;
+  created_at: Date;
+  updated_at: Date;
+}
+
   
 
 export interface StorageDetails {

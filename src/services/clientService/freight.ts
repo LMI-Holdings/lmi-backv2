@@ -1,5 +1,6 @@
 import { FreightDetails } from "../../dtos/ClientServices";
 import { Freight } from "../../models/Freight";
+import { Stepper } from "../../models/Stepper";
 import { User } from "../../models/User";
 import { verifyToken } from "../../utils/jwtUtils";
 import EmailService from "../EmailService";
@@ -13,6 +14,8 @@ class FreightService {
           const createdFreight = await Freight.create({
             ...freightDetails // Assign the authenticated user as the owner of the freight
           });
+
+          const stepper = await Stepper.create();
     
           await EmailService.sendNewFreightCreated(createdFreight.userId, createdFreight.id)
           return createdFreight;
