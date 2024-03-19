@@ -30,6 +30,7 @@ export class Freight extends Model {
   
   @Column({
     allowNull: true,
+    type: DataType.FLOAT,
   })
   billing!: number;
 

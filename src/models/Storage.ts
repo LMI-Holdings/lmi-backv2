@@ -44,6 +44,7 @@ export class Storage extends Model {
 
   @Column({
     allowNull: true,
+    type: DataType.FLOAT
   })
   billing!: number;
 

@@ -38,7 +38,7 @@ module.exports = {
       },
       billing: {
         allowNull: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
       },
       weight: {
         allowNull: true,

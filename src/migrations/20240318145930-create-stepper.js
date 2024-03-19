@@ -104,6 +104,10 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
       },
+      billing: {
+        allowNull: true,
+        type: Sequelize.FLOAT,
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE

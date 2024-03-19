@@ -52,6 +52,7 @@ export class OverseasLogistics extends Model {
 
   @Column({
     allowNull: true,
+    type: DataType.FLOAT
   })
   billing!: number;
 

@@ -54,6 +54,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: true,
       },
+      billing: {
+        allowNull: true,
+        type: Sequelize.FLOAT,
+      },
       warehouseLocation: {
         type: Sequelize.JSONB,
         allowNull: true,
