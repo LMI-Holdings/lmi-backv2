@@ -36,6 +36,10 @@ module.exports = {
         allowNull: true,
         type: Sequelize.STRING,
       },
+      billing: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+      },
       weight: {
         allowNull: true,
         type: Sequelize.STRING,

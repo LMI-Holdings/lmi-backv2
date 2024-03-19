@@ -24,6 +24,7 @@ export interface FreightDetails {
   status: string;
   needStorageOption: boolean;
   storageServiceId: string | null;
+  billing: number | null;
   created_at: Date;
   updated_at: Date;
 }
@@ -49,6 +50,7 @@ export interface OverseasLogisticsDetails {
       longitude: number;
   };
   status: string;
+  billing: number | null;
   created_at: Date;
   updated_at: Date;
 }
@@ -96,6 +98,7 @@ export interface StorageDetails {
   };
   status: string;
   userId: string;
+  billing: number | null;
   // user: User; // Assuming you have a User interface
   created_at: Date;
   updated_at: Date;

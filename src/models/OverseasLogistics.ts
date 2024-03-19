@@ -52,6 +52,11 @@ export class OverseasLogistics extends Model {
 
   @Column({
     allowNull: true,
+  })
+  billing!: number;
+
+  @Column({
+    allowNull: true,
     type: DataType.STRING,
   })
   bankStatementAttachment!: string;

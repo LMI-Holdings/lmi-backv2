@@ -27,6 +27,11 @@ export class Freight extends Model {
     allowNull: true,
   })
   companyName!: string;
+  
+  @Column({
+    allowNull: true,
+  })
+  billing!: number;
 
   @Column
   shipmentType!: string;

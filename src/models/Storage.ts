@@ -44,6 +44,11 @@ export class Storage extends Model {
 
   @Column({
     allowNull: true,
+  })
+  billing!: number;
+
+  @Column({
+    allowNull: true,
     type: DataType.STRING,
   })
   packageType!: string;
