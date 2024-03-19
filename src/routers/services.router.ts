@@ -14,6 +14,7 @@ router.post('/freight', authenticateToken, FreightController.createFreight);
 router.put('/freight/:id', authenticateToken, FreightController.updateFreight);
 router.get('/freight', authenticateToken, FreightController.getFreights);
 router.get('/freight/:id', authenticateToken, FreightController.getFreightById);
+router.get('/freight/user/:id', authenticateToken, FreightController.getUserFreightById);
 router.delete('/freight/:id', authenticateToken, FreightController.deleteFreight);
 
 // For Overseas
@@ -21,6 +22,7 @@ router.post('/overseas', authenticateToken, overseasLogisticsController.createOv
 router.put('/overseas/:id', authenticateToken, overseasLogisticsController.updateOverseas);
 router.get('/overseas', authenticateToken, overseasLogisticsController.getOverseas);
 router.get('/overseas/:id', authenticateToken, overseasLogisticsController.getOverseasByiD);
+router.get('/overseas/user/:id', authenticateToken, overseasLogisticsController.getUserOverseasByiD);
 router.delete('/overseas/:id', authenticateToken, overseasLogisticsController.deleteOverseas);
 
 
@@ -29,10 +31,12 @@ router.post('/storage', authenticateToken, storageController.createStorage);
 router.put('/storage/:id', authenticateToken, storageController.updateStorage);
 router.get('/storage', authenticateToken, storageController.getStorage);
 router.get('/storage/:id', authenticateToken, storageController.getStorageById);
+router.get('/storage/user/:id', authenticateToken, storageController.getUserStorageById);
 router.delete('/storage/:id', authenticateToken, storageController.deleteStorage);
 
 
 // Stepper
 router.put('/stepper', authenticateToken, stepperController.updateStepper);
+router.put('/stepper/user/:id', authenticateToken, stepperController.UserStepper);
 
 export default router;

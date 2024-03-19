@@ -50,6 +50,20 @@ class FreightService {
         }
     }
 
+    async getUsersFreightById(id: string) {
+        try {
+            const freight = await Freight.findAll({where: {userId : id}});
+
+            if (!freight) {
+                throw new Error("Freight not found");
+            }
+
+            return freight;
+        } catch (err: any) {
+            throw new Error(err.message || "Error fetching freight");
+        }
+    }
+
     async getAllFreight() {
         try {
             // User is authenticated, proceed to fetch all freight

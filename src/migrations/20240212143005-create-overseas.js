@@ -7,7 +7,7 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
-        defaultValue: Sequelize.literal('uuid_generate_v4()'), // This assumes you're using PostgreSQL with the "uuid-ossp" extension
+        defaultValue: Sequelize.literal('uuid_generate'), // This assumes you're using PostgreSQL with the "uuid-ossp" extension
         unique: true,
       },
       userId: {

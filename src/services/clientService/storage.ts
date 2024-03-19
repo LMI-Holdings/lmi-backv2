@@ -43,6 +43,15 @@ class StorageService {
       throw new Error(err.message || "Error fetching storage");
     }
   }
+  
+  async getUserStorageById(id: string) {
+    try {
+      const storage = await Storage.findAll({where: {userId: id}});
+      return storage;
+    } catch (err: any) {
+      throw new Error(err.message || "Error fetching storage");
+    }
+  }
 
   async getAllStorage(): Promise<Storage[]> {
     try {

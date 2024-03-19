@@ -66,6 +66,17 @@ class OverseasLogisticsService {
       throw new Error(err.message || "Error fetching overseas logistics");
     }
   }
+  
+  async getAllUserOverseasLogistics(id :  string) {
+    try {
+      // User is authenticated, proceed to fetch all overseas logistics
+      const allLogistics = await OverseasLogistics.findAll({where : {userId : id}});
+
+      return allLogistics;
+    } catch (err: any) {
+      throw new Error(err.message || "Error fetching overseas logistics");
+    }
+  }
 
   async updateOverseasLogistics(id: string, updatedDetails: OverseasLogisticsDetails) {
     try {

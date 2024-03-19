@@ -1,5 +1,17 @@
 import { Sequelize } from 'sequelize-typescript';
 
+// const sequelize = new Sequelize({
+//     database: 'lmiclient',
+//     username: 'postgres',
+//     password: 'mckenzie1234',
+//     host: 'localhost',
+//     port: 5432,
+//     dialect: 'postgres',
+//     models: [__dirname + '/../models'],
+//     dialectOptions: {
+//         connectTimeout: 600000, // Set the connection timeout to 60 seconds (adjust as needed)
+//       },
+// });
 const sequelize = new Sequelize({
     database: 'postgres',
     username: 'postgres.fgjlxfwlkdfwzkqgucdt',

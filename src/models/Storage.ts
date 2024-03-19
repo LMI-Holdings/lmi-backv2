@@ -1,7 +1,7 @@
 import { Model, Table, Column, ForeignKey, BelongsTo, DataType, PrimaryKey, CreatedAt, UpdatedAt } from 'sequelize-typescript';
 import { Warehouse } from './Warehouse'; // Import the Warehouse model
 import { Freight } from './Freight'; // Import the DeliveryService model
-import { UUIDV4 } from 'sequelize';
+import { UUID } from 'sequelize';
 import { User } from './User';
 
 @Table
@@ -10,7 +10,7 @@ export class Storage extends Model {
   @PrimaryKey
   @Column({
     type: DataType.UUID,
-    defaultValue: UUIDV4,
+    defaultValue: UUID,
     allowNull: false,
     unique: true,
   })

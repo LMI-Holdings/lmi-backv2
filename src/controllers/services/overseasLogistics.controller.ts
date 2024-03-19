@@ -40,6 +40,20 @@ class OverseasLogistics {
       next(err);
     }
   }
+ 
+  async getUserOverseasByiD(req: Request, res: Response, next: NextFunction) {
+    try {
+      const overseasId = req.params.id;
+    //   const token = req.headers['authorization'] as string;
+      const overseas = await OverseasLogisticsService.getAllUserOverseasLogistics(overseasId);
+      if (!overseas) {
+        return res.status(404).json({ error: 'Overseas not found' });
+      }
+      return res.status(200).json(overseas);
+    } catch (err) {
+      next(err);
+    }
+  }
 
   async updateOverseas(req: Request, res: Response, next: NextFunction) {
     try {

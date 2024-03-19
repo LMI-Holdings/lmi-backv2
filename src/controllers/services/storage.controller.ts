@@ -33,6 +33,18 @@ class StorageController {
       next(err);
     }
   }
+  async getUserStorageById(req: Request, res: Response, next: NextFunction) {
+    try {
+      const storageId = req.params.id;
+      const storage = await StorageService.getUserStorageById(storageId);
+      if (!storage) {
+        return res.status(404).json({ error: 'Storage not found' });
+      }
+      return res.status(200).json(storage);
+    } catch (err) {
+      next(err);
+    }
+  }
 
   async updateStorage(req: Request, res: Response, next: NextFunction) {
     try {

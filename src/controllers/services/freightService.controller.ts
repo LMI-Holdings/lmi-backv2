@@ -53,6 +53,19 @@ class FreightController {
           next(err);
         }
     }
+   
+    async getUserFreightById(req: Request, res: Response, next: NextFunction) {
+        try {
+          const freightId = req.params.id;
+          const freight = await FreightService.getUsersFreightById(freightId);
+          if (!freight) {
+            return res.status(404).json({ error: 'Freight not found' });
+          }
+          return res.status(200).json(freight);
+        } catch (err) {
+          next(err);
+        }
+    }
     /*
     #swagger.tags = ['Freight']
     #swagger.description = 'Endpoint to update a freight'
