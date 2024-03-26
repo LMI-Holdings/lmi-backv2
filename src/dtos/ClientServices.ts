@@ -73,7 +73,7 @@ export interface StepperAttributes {
   transport: string | null;
   delivered: string | null;
   warehouse_status: string | null;
-  userId: string | null;
+  userId: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -81,7 +81,7 @@ export interface StepperAttributes {
   
 
 export interface StorageDetails {
-  id: string;
+  id: UUID;
   warehouseId: string;
   // warehouse: Warehouse; // Assuming you have a Warehouse interface
   freightserviceId: string;

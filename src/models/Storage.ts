@@ -3,6 +3,7 @@ import { Warehouse } from './Warehouse'; // Import the Warehouse model
 import { Freight } from './Freight'; // Import the DeliveryService model
 import { UUID } from 'sequelize';
 import { User } from './User';
+import { UUIDV4 } from 'sequelize';
 
 @Table
 export class Storage extends Model {
@@ -10,7 +11,7 @@ export class Storage extends Model {
   @PrimaryKey
   @Column({
     type: DataType.UUID,
-    defaultValue: UUID,
+    defaultValue: UUIDV4,
     allowNull: false,
     unique: true,
   })
