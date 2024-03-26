@@ -127,7 +127,7 @@ class EmailService {
       const mailOptionsToClient = {
         from: String(process.env.MAIL_USER),
         to: userDetails?.email,
-        subject: "Your Storage Request has been Successfully Created.",
+        subject: "Your Request for Storage has been Successfully Created.",
         text: `Hi ${userDetails?.first_name}, 
         \n Storage Request ${storageId} was successful, 
         \n Thank you for your new request, you would receive a call shortly concerning your request. 
@@ -135,14 +135,14 @@ class EmailService {
       };
 
       // Email to Admin
-      const mailOptionsToAdmin = {
-        from: String(process.env.MAIL_USER),
-        to: "panditmckenzie@gmail.com",
-        subject: "An Storage Request has been Succefully Created.",
-        text: `Storage ${storageId} requested by ${userDetails?.first_name},
-         contact them through either ${userDetails?.phone_number} or ${userDetails?.email} 
-         to confirm and proceed with request. \n Thank you.`,
-      };
+      // const mailOptionsToAdmin = {
+      //   from: String(process.env.MAIL_USER),
+      //   to: "panditmckenzie@gmail.com",
+      //   subject: "An Storage Request has been Succefully Created.",
+      //   text: `Storage ${storageId} requested by ${userDetails?.first_name},
+      //    contact them through either ${userDetails?.phone_number} or ${userDetails?.email} 
+      //    to confirm and proceed with request. \n Thank you.`,
+      // };
 
       await this.transporter.sendMail(mailOptionsToClient);
       // await this.transporter.sendMail(mailOptionsToAdmin);
