@@ -6,8 +6,14 @@ import EmailService from "../EmailService";
 // var created : OverseasLogistics;
 
 class OverseasLogisticsService {
-  async createOverseasLogistics(logisticsDetails: OverseasLogisticsDetails): Promise<OverseasLogistics> {
+  async createOverseasLogistics(logisticsDetails: OverseasLogisticsDetails, bankStatementAttachment : any): Promise<OverseasLogistics> {
     try {
+
+      const file: any = bankStatementAttachment;
+
+      const uploadedFile = file ? file.path : null;
+      logisticsDetails.bankStatementAttachment = uploadedFile;
+      
       // User is authenticated, proceed to create overseas logistics
       console.log([logisticsDetails])
       const createdLogistics = await OverseasLogistics.create({

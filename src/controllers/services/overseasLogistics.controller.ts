@@ -1,6 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import OverseasLogisticsService from '../../services/clientService/overseas';
 import { FreightDetails } from '../../dtos/ClientServices';
+import multer from 'multer';
+
+// Multer storage configuration
+// Field name for the file in the form data
+
 
 class OverseasLogistics {
     
@@ -8,10 +13,11 @@ class OverseasLogistics {
     So we have Incoming Overseas Shipment and Outgoing Overseas Shipment.
     Also, the incoming overseas are Shipment from Overseas countryy or from port... 
     */
+   
 
     async createOverseas(req: Request, res: Response, next: NextFunction) {
         try {
-          const createdFreight = await OverseasLogisticsService.createOverseasLogistics(req.body);
+          const createdFreight = await OverseasLogisticsService.createOverseasLogistics(req.body, req.file);
           return res.status(201).json(createdFreight);
         } catch (err) {
           next(err);
@@ -78,8 +84,3 @@ class OverseasLogistics {
 }
 
 export default new OverseasLogistics();
-
-
-
-
-

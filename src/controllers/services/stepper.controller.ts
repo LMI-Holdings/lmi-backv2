@@ -23,5 +23,16 @@ class StepperController{
             next(err);
         }
     }
+   
+    async getUserStepper(req: Request, res: Response, next: NextFunction){
+        try {
+            const stepperId = req.params.id;
+
+            const getUserStepper = await StepperUpdate.findUsersStepper(stepperId);
+            return res.status(200).json(getUserStepper);
+        } catch (err : any) {
+            next(err);
+        }
+    }
 }
 export default new StepperController();

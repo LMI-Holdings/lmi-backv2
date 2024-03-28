@@ -5,6 +5,7 @@ import { authenticateToken } from '../middlewares/authMiddleware';
 import overseasLogisticsController from '../controllers/services/overseasLogistics.controller';
 import storageController from '../controllers/services/storage.controller';
 import stepperController from '../controllers/services/stepper.controller';
+import upload from '../middlewares/fileUploadMiddleware';
 
 
 const router = express.Router();
@@ -38,5 +39,6 @@ router.delete('/storage/:id', authenticateToken, storageController.deleteStorage
 // Stepper
 router.put('/stepper', authenticateToken, stepperController.updateStepper);
 router.put('/stepper/user/:id', authenticateToken, stepperController.UserStepper);
+router.get('/stepper/user/:id', authenticateToken, stepperController.getUserStepper);
 
 export default router;
