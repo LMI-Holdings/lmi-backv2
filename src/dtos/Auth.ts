@@ -32,6 +32,9 @@ export interface IUser {
   isAdmin?: boolean
 }
 
+
+
+
 export interface LoginRequest {
   email: string,
   password: string

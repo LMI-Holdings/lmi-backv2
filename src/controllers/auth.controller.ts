@@ -11,6 +11,16 @@ class AuthController {
         }
     }
 
+    async updateUser(req: Request, res: Response, next: NextFunction) {
+        try {
+            const updateUser = await AuthService.updateUser(req.body, req.params.id);
+            // console.log({...updateUser})
+            return res.status(201).json({...updateUser});
+        } catch (err) {
+            next(err);
+        }
+    }
+
     async getUsers(req :Request, res : Response, next : NextFunction){
         try {
             const getUsersOnly = await AuthService.getUsersOnly();

@@ -38,6 +38,22 @@ class AuthService {
     }
     }
 
+    async updateUser(user: IUser, id : string){
+        try {
+            const getUser = await User.findOne({ where: { id }});
+    
+            if(!getUser) throw new Error("user does not exists")
+            
+            await getUser.update({...user})
+            await getUser.save()
+    
+            return getUser?.dataValues;
+        } catch (err : any) {
+                throw new Error(err.message || 'Error creating user');
+            }
+        }
+    
+
     async createAdmin(user: IUser) {
         try {
 
